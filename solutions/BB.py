@@ -1,12 +1,19 @@
-def f(x, y, z, w):
-    return (z == (not y)) and ((not x) or y) and w
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+b = [0] * n
 
-print("x y z w")
+for i in range(1, n):
+    if a[i - 1] < a[i]:
+        b[i] = 1
 
-for x in range(2):
-    for y in range(2):
-        for z in range(2):
-            for w in range(2):
-                if f(x, y, z, w):
-                    print(x, y, z, w)
-
+cnt = 0
+for i in range(n):
+    if i < k - 1:
+        cnt += b[i]
+        continue
+    elif i == k - 1:
+        cnt += b[i]
+    else:
+        cnt -= b[i - k + 1]
+        cnt += b[i]
+    print(cnt, end=" ")
