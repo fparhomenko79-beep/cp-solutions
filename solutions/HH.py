@@ -16,4 +16,4 @@ def biniry_search(tar, a):
 
 for i in range(q):
     ans = biniry_search(x[i], a)
-    print(ans + 1 if ans != 0 else 0)
+    print(ans + 1 if ans != 0 else 0, end=" ")
