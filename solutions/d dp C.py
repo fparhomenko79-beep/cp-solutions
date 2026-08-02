@@ -1,21 +1,25 @@
-q = int(input())
+q_m = input().split()
+q = int(q_m[0])
+m = int(q_m[1])
 
 for _ in range(q):
     a, b = input().split()
     a = a.zfill(len(b))
+
     a = list(map(int, a))
     b = list(map(int, b))
 
-    dp = {(1, 1): 0}
+    dp = {(1, 1, 0): 1}
 
     for i in range(len(a)):
         new = {}
 
-        for (low, high), current_sum in dp.items():
+        for (low, high, rem), prod in dp.items():
             if low:
                 left_num = a[i]
             else:
                 left_num = 0
+
             if high:
                 right_num = b[i]
             else:
@@ -25,18 +29,24 @@ for _ in range(q):
                 new_low = 1 if (low and j == a[i]) else 0
                 new_high = 1 if (high and j == b[i]) else 0
 
-                new_sum = current_sum + j
+                new_rem = (rem + j) % m
 
-                sost = (new_low, new_high)
+                if j > 0:
+                    new_prod = prod * j
+                else:
+                    new_prod = prod
+
+                sost = (new_low, new_high, new_rem)
 
                 if sost not in new:
-                    new[sost] = new_sum
+                    new[sost] = new_prod
                 else:
-                    new[sost] = max(new[sost], new_sum)
+                    new[sost] = max(new[sost], new_prod)
 
         dp = new
-
     ans = 0
-    for current_sum in dp.values():
-        ans = max(ans, current_sum)
+
+    for (low, high, rem), prod in dp.items():
+        if rem == 0:
+            ans = max(ans, prod)
     print(ans)

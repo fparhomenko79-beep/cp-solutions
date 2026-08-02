@@ -23,8 +23,8 @@ for _ in range(q):
                 right_num = 9
 
             for j in range(left_num, right_num + 1):
-                new_low = low and (j == a[i])
-                new_high = high and (j == b[i])
+                new_low = 1 if (low and j == a[i]) else 0
+                new_high = 1 if (high and j == b[i]) else 0
 
                 if started:
                     new_started = 1
