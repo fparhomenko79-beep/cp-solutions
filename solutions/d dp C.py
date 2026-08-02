@@ -1,11 +1,8 @@
-q_m = input().split()
-q = int(q_m[0])
-m = int(q_m[1])
+q, m = map(int, input().split())
 
 for _ in range(q):
     a, b = input().split()
     a = a.zfill(len(b))
-
     a = list(map(int, a))
     b = list(map(int, b))
 
