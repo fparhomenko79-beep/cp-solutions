@@ -33,7 +33,7 @@ for i in range(n):
         for j in range(len(ak)):
             lim = ak[j]
             minimal_num = 1 if j == 0 else 0
-            num_dp0 = num_dp1 =0
+            num_dp0 = num_dp1 = 0
 
             if a[i + j] == -1:
                 num_dp1 = (dp1 * (k - minimal_num)) % MOD
@@ -42,7 +42,6 @@ for i in range(n):
                     num_dp1 = (num_dp1 + dp0 * (lim - minimal_num)) % MOD
                 if lim >= minimal_num:
                     num_dp0 = dp0
-
             else:
                 d = a[i + j]
                 if d >= minimal_num:
