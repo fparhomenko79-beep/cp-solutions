@@ -1,3 +1,5 @@
+from collections import deque
+
 n, k, x = map(int, input().split())
 graph = [[] for _ in range(n + 1)]
 for _ in range(n - 1):
