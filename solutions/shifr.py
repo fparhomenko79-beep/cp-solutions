@@ -37,7 +37,7 @@ for i in range(n):
 
             if a[i + j] == -1:
                 num_dp1 = (dp1 * (k - minimal_num)) % MOD
-                
+
                 if lim > minimal_num:
                     num_dp1 = (num_dp1 + dp0 * (lim - minimal_num)) % MOD
                 if lim >= minimal_num:
